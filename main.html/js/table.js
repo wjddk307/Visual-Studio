@@ -79,7 +79,7 @@ class Estimate { //class 한개엔  생성자 한개
 
 let unitInfo = [{type:'wood', price:100}, {type:'iron',price:300}, {type:'plastic',price:200}];
 const estimator = new Estimate(unitInfo);
-estimator.addUnit({type: 'glass', peice: 500}); //새로운 단위 추가
+estimator.addUnit({type: 'glass', price: 500}); //새로운 단위 추가
 
 let amt = estimator.getEstimate('glass', 20, 20);
 console.log(amt);
