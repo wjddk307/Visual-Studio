@@ -28,7 +28,7 @@ class Student {
          this.sname = sname;
          this.age = age;
       }
-      //메소드.
+      //메소드. 
       setMathScore(mathScore) {
           this.mathScore = mathScore;
       }
