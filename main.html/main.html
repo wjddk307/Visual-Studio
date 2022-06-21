@@ -1,26 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>main.html</title>
-    <script> //위에서부터 순차적 실행
-        
-    </script>
-</head> 
-<!-- <body> //html 영역 -->
-    <!-- <a href="#">이동사이트</a> -->
-    <input type="file" id="selectFile" name="selectFile" accept="text/plain">
-    <script src="js/string_basic.js"></script>
 
-    <!-- <button id ='add'>클릭</button>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>main.html</title>
+  <script>
+    //위에서부터 순차적 실행
+  </script>
+</head>
+
+<body>
+  <!--html 영역 -->
+  <!-- <a href="#">이동사이트</a> -->
+  <!-- <input type="file" id="selectFile" name="selectFile" accept="text/plain"> -->
+  <ul>
+    <li>Apple</li>
+    <li>Banana</li>
+    <li>Cherry</li>
+    <!-- <script src="js/array_method.js"></script> -->
+
+    <div>
+      <h1>Cities</h1>
+      <ul>
+        <li id="one" class="red">Seoul</li>
+        <li id="two" class="red">London</li>
+        <li id="three" class="red">Newyork</li>
+        <li id="four">Tokyo</li>
+      </ul>
+    </div>
+
+    <button id="add1">클릭</button>
+    <button id="add2">클릭</button>
+
     <script>
-       let btn = document.getElementById('add');
-       console.log(btn);
-       btn.addEventListener('click', function () {
-         console.log(this); //window(X), object(X), eventTarget(O).
-       })
-    </script> -->
+      let list = document.getElementsByTagName('li'); //HTMLCollection
+      let detail = list[3];
+      // element, attaribute, text => node. DOM API(medhod(), 속성)
+      let attNode = detail.getAttribute('id');
+      let txtNode = detail.childNodes[0];
+      //console.log(detail, attNode, txtnode);
+
+      let add1 = document.getElementById('add1');
+      add1.addEventListener('click', function () {
+        // element node 생성.
+        let li = document.createElement('li'); // element node 생성.
+        li.innerHTML = '대구';
+        let ul = document.querySelector('div > ul');
+        ul.appendChild(li); //<ul><li>대구</li></ul>
+        console.log(li);
+      })
+
+      let btns = document.querySelectorAll('button'); //NodeList
+      btns[1].addEventListener('click', function () {  //'click' 대신에 'mouseout'가능.
+           document.querySelector('div > ul > li').remove();
+      })
+      console.log(btns[1]);
+    </script>
 </body>
+
 </html>

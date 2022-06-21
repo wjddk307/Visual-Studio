@@ -20,7 +20,7 @@ str += '</tr></table>';
 
 //달력.
 let month = 5;
-showCalender(7);
+showCalender(7); 
 
 function showCalender(month) {
     let days = ['일', '월', '화', '수', '목', '금', '토'];
