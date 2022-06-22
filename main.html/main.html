@@ -24,7 +24,7 @@
     <div>
       <h1>Cities</h1>
       <ul>
-        <li id="one" class="red">Seoul</li>
+        <li id="one" class="red">Seoul,oiu</li>
         <li id="two" class="red">London</li>
         <li id="three" class="red">Newyork</li>
         <li id="four">Tokyo</li>
@@ -39,8 +39,8 @@
       let detail = list[3];
       // element, attaribute, text => node. DOM API(medhod(), 속성)
       let attNode = detail.getAttribute('id');
-      let txtNode = detail.childNodes[0];
-      //console.log(detail, attNode, txtnode);
+      let txtNode = detail.childNodes[1];
+      console.log(detail, attNode, txtNode);
 
       let add1 = document.getElementById('add1');
       add1.addEventListener('click', function () {
@@ -53,6 +53,8 @@
       })
 
       let btns = document.querySelectorAll('button'); //NodeList
+      console.log(btns);
+
       btns[1].addEventListener('click', function () {  //'click' 대신에 'mouseout'가능.
            document.querySelector('div > ul > li').remove();
       })
