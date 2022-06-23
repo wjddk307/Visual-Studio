@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>asynch.html</title>
+    <script>
+        // 동기(순서대로) vs. 비동기
+        setTimeout(function () {
+            console.log('start');
+
+            setTimeout(function () {
+                console.log('mid');
+
+                setTimeout(function () {
+                    console.log('end');
+
+                }, 1500);
+
+            }, 1000); //1000밀리세컨드 - 1초
+
+        }, 2000);
+
+        let xhtp = new XMLHttpRequest(); // Ajax : 파일정보 읽기.
+        xhtp.open('get', '../main.html/js/dataset.xml'); // 요청방식, 요청URL
+        xhtp.send();
+        xhtp.onload = loadCallBack;
+
+        // let ajax = new XMLHttpRequest();
+        // ajax.open('get', '...??');
+        // ajax.onload = loadCallBack;
+
+        function loadCallBack() {
+            //console.log(xhtp.responseText); // xhtp.responseText : 'data.txt'가 갖고있는 값 
+            //document.write(xhtp.responseText);
+            //let data = JSON.parse(xhtp.responseText); //text 형식을 자바스크립스에서 사용가능한 오브젝트로 변경.
+            //console.log(data);
+            console.log(this.responseXML); //this(xhtp): 해당되는 객체의 코드 
+            let doc = this.responseXML;
+            let records = doc.getElementsByTagName('record'); // HTMLcollection
+            records = doc.querySelectorAll('record'); // NodeList
+            console.log(records[0].children[1].innerHTML);
+            let show = document.getElementById('show');
+
+            records.forEach(member => {
+                //console.log(member)
+                let str = '';
+                for (let i = 0; i < member.children.length; i++) {
+                    str += member.children[i].innerHTML + " ";
+                }
+                console.log(str);
+                let li = document.createElement('li');
+                let txt = document.createTextNode(str);
+                li.appendChild(txt);
+                show.appendChild(li);
+            });
+        }
+    </script>
+</head>
+
+<body>
+    <ul id="show">
+        <!-- <li>id, fn, ln, em, sal</li> -->
+    </ul>
+</body>
+
+</html>
